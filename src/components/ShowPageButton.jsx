@@ -52,8 +52,8 @@ function StartButton({showPage, inputValue}) {
   return (
       <Affix offsetTop={95} style={{ position: 'absolute', right: '40px', top:'95px' }} >
         {inputValue.length === 0
-          ? <StarButton  onClick={() => handleShowPage()}/>
-          : <StarButton   onClick={() => handleShowPage()}/>
+          ? <StarButton  disabled={false}  onClick={() => handleShowPage()}/>
+          : <StarButton disabled={true}  onClick={() => handleShowPage()}/>
         }
       </Affix>
   );
