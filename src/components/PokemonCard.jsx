@@ -9,6 +9,8 @@ export function PokemonCard({ name, image, abilities, types, favorite }) {
   const typeString = types.map(element => (element.type.name).slice(1)).join(', ')
   const abilitiess = abilities.map(ability => (ability.ability.name).slice(1)).join(', ')
   const handleOnFavorite = ()=> {
+    console.log("🚀 ~ file: PokemonCard.jsx:8 ~ PokemonCard ~ favorite:", favorite)
+    console.log("🚀 ~ file: PokemonCard.jsx:8 ~ PokemonCard ~ name:", name)
     dispatch(setFavorites({ name: name, favorite: favorite }))
     dispatch(setLocalStorage({ isFavorite: favorite}))
   }
@@ -30,7 +32,7 @@ export function PokemonCard({ name, image, abilities, types, favorite }) {
             src={ image }
           />
         }
-        extra={<StarButton favorite={ favorite } onClick={handleOnFavorite}/>}
+        extra={<StarButton disabled={ false } favorite={ favorite } onClick={() => handleOnFavorite()}/>}
       >
         <Meta
           avatar={<Avatar src="https://joesch.moe/api/v1/random" />}

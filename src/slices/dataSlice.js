@@ -44,6 +44,23 @@ export const dataSlice = createSlice({
       const currentPokemonIndex = state.pokemons.findIndex(
         (pokemon) => pokemon.name === action.payload.name
       )
+        const siFalse = false
+        if(state.inputValue !== '' && state.searchedPokemons.length !== 0){
+          const currentPokemonIndexSearch = state.searchedPokemons.findIndex(
+            (pokemon) => pokemon.name === action.payload.name
+          )
+       
+          if (currentPokemonIndexSearch >= 0){
+            state.searchedPokemons[currentPokemonIndexSearch].favorite = !action.payload.favorite
+            if(action.payload.favorite){
+              state.searchedPokemons = state.searchedPokemons.filter(pokemon => pokemon.name !== action.payload.name)
+              if(state.searchedPokemons.length === 0){
+                state.showErrorNotPokemonFound = true
+              }
+            }
+          }
+        }
+
       if(!action.payload.favorite){
         state.pokemons[currentPokemonIndex].favorite = !action.payload.favorite
         state.favorites.push(state.pokemons[currentPokemonIndex])
@@ -54,7 +71,6 @@ export const dataSlice = createSlice({
       }
     },
     setSearchPokemon: (state, action) => {
-      console.log('Entro en setSearchtPokemons')
       let arrayPoke = []
       if(action.payload.showPage === 'pokemonsList'){
         arrayPoke = state.pokemons
