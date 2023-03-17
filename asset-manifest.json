@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Pokedux_App/static/css/main.f2a6c838.css",
-    "main.js": "/Pokedux_App/static/js/main.d08c56e8.js",
+    "main.js": "/Pokedux_App/static/js/main.b057b5fe.js",
     "static/media/logo.svg": "/Pokedux_App/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
     "static/media/pikachu_sad.png": "/Pokedux_App/static/media/pikachu_sad.415c60fff52c5e0b6944.png",
     "static/media/pokemon_not_found.jpg": "/Pokedux_App/static/media/pokemon_not_found.6f6d02d16e9a7975a95a.jpg",
     "index.html": "/Pokedux_App/index.html",
     "main.f2a6c838.css.map": "/Pokedux_App/static/css/main.f2a6c838.css.map",
-    "main.d08c56e8.js.map": "/Pokedux_App/static/js/main.d08c56e8.js.map"
+    "main.b057b5fe.js.map": "/Pokedux_App/static/js/main.b057b5fe.js.map"
   },
   "entrypoints": [
     "static/css/main.f2a6c838.css",
-    "static/js/main.d08c56e8.js"
+    "static/js/main.b057b5fe.js"
   ]
 }
