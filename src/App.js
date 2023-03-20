@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-pascal-case */
+
 //React
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 //React-Redux
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 //Ant Desing
-import { Affix, Button } from 'antd';
 import { Col } from 'antd';
 
 //Components
@@ -20,12 +20,15 @@ import logo from './static/logo.svg';
 import { LoadingPage } from './components/LoadingPage';
 import { PokemonNotFound } from './components/PokemonNotFound';
 import { NoPokemonFav } from './components/NoPokemonFav';
-import { StarButton } from './components/StartButton';
 
 //Slices
 import { fetchPokemonsWithDetails } from './slices/dataSlice';
 import { setLoading } from './slices/uiSlice';
 import { ShowPageButton } from './components/ShowPageButton';
+
+//Toast
+import { Toaster } from 'react-hot-toast';
+
 
 function App() {
   //Nos traemos del store el valor que necesitamos
@@ -76,6 +79,10 @@ function App() {
             </Col>
           </div>
       }
+      <Toaster
+          position="top-center"
+          toastOptions={{className: '',duration: 1500,}}
+      />
     </div>
   );
 }

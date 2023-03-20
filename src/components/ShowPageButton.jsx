@@ -41,19 +41,11 @@ function NormalButton({ showPage, inputValue}) {
   );
 }
 function StartButton({showPage, inputValue}) {
-  const dispach = useDispatch();
-  const handleShowPage = ()=> {
-    if(showPage === "pokemonsList"){
-      dispach(setPageToShow('favPokemonsList'))
-    }else{
-      dispach(setPageToShow('pokemonsList'))
-    }
-  }
   return (
       <Affix offsetTop={95} style={{ position: 'absolute', right: '40px', top:'95px' }} >
         {inputValue.length === 0
-          ? <StarButton  disabled={false}  onClick={() => handleShowPage()}/>
-          : <StarButton disabled={true}  onClick={() => handleShowPage()}/>
+          ? <StarButton  disabled={false} name={showPage} />
+          : <StarButton disabled={true} name={showPage} />
         }
       </Affix>
   );

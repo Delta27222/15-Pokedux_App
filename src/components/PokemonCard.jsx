@@ -1,20 +1,14 @@
 import { Card, Avatar } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import { useDispatch } from 'react-redux';
-import { setFavorites, setLocalStorage } from '../slices/dataSlice';
 import { StarButton } from './StartButton';
 
+//Lazy loading Component
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import noImage from '../static/no-pictures.png'
+
 export function PokemonCard({ name, image, abilities, types, favorite }) {
-  const dispatch = useDispatch();
   const typeString = types.map(element => (element.type.name).slice(1)).join(', ')
   const abilitiess = abilities.map(ability => (ability.ability.name).slice(1)).join(', ')
-  const handleOnFavorite = ()=> {
-    console.log("🚀 ~ file: PokemonCard.jsx:8 ~ PokemonCard ~ favorite:", favorite)
-    console.log("🚀 ~ file: PokemonCard.jsx:8 ~ PokemonCard ~ name:", name)
-    dispatch(setFavorites({ name: name, favorite: favorite }))
-    dispatch(setLocalStorage({ isFavorite: favorite}))
-  }
-
   return(
     <>
       <Card
@@ -26,13 +20,18 @@ export function PokemonCard({ name, image, abilities, types, favorite }) {
           </div>
         }
         cover={
-          <img
-          className='scale-75'
-            alt={ name }
-            src={ image }
-          />
+          // eslint-disable-next-line jsx-a11y/alt-text
+          <div className='pl-[34px] pt-[24px] '>
+            <LazyLoadImage
+              key={name}
+              alt={ name }
+              src={ image }
+              className='h-36'
+              placeholderSrc={noImage}
+            />
+          </div>
         }
-        extra={<StarButton disabled={ false } favorite={ favorite } onClick={() => handleOnFavorite()}/>}
+        extra={<StarButton disabled={ false } favorite={ favorite } name={name}/>}
       >
         <Meta
           avatar={<Avatar src="https://joesch.moe/api/v1/random" />}
@@ -44,10 +43,11 @@ export function PokemonCard({ name, image, abilities, types, favorite }) {
           }
         />
       </Card>
+
     </>
   )
 }
-const capitalize = (str) => {
+export const capitalize = (str) => {
   const word =str.charAt(0).toUpperCase() + str.slice(1);
   return word
 }
