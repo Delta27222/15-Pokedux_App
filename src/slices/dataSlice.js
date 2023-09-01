@@ -44,7 +44,6 @@ export const dataSlice = createSlice({
       const currentPokemonIndex = state.pokemons.findIndex(
         (pokemon) => pokemon.name === action.payload.name
       )
-        const siFalse = false
         if(state.inputValue !== '' && state.searchedPokemons.length !== 0){
           const currentPokemonIndexSearch = state.searchedPokemons.findIndex(
             (pokemon) => pokemon.name === action.payload.name
